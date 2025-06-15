@@ -39,25 +39,32 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-      <div className="glass-effect rounded-2xl p-4 space-y-4">
-        {navItems.map(({ id, icon: Icon, label }) => (
-          <button
-            key={id}
-            onClick={() => scrollToSection(id)}
-            className={`group relative p-3 rounded-xl transition-all duration-300 hover:scale-110 ${
-              activeSection === id
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
-            }`}
-            title={label}
-          >
-            <Icon size={20} />
-            <span className="absolute left-full ml-4 px-3 py-1 bg-black/80 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              {label}
-            </span>
-          </button>
-        ))}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="text-xl font-bold gradient-text">
+            Athos
+          </div>
+          <div className="flex items-center space-x-1">
+            {navItems.map(({ id, icon: Icon, label }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className={`group relative px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 ${
+                  activeSection === id
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+                }`}
+                title={label}
+              >
+                <div className="flex items-center space-x-2">
+                  <Icon size={18} />
+                  <span className="hidden md:inline text-sm font-medium">{label}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </nav>
   );
